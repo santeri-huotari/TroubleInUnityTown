@@ -23,6 +23,12 @@ public class Player : NetworkBehaviour
     {
         characterController = gameObject.GetComponent<CharacterController>();
         cameraObject = gameObject.GetComponentInChildren<Camera>().gameObject;
+
+        if (!isLocalPlayer)
+        {
+            cameraObject.GetComponent<Camera>().enabled = false;
+            cameraObject.GetComponent<AudioListener>().enabled = false;
+        }
     }
 
     // Update is called once per frame
